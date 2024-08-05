@@ -15,7 +15,7 @@ namespace MVC.WebApp
             builder.Services.AddControllers();
 
             builder.Services.GetServices();
-
+            builder.Services.AddSwaggerGen();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -23,7 +23,8 @@ namespace MVC.WebApp
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
+            app.UseSwagger();
+            app.UseSwaggerUI();
             app.MapControllers();
 
             app.Run();
