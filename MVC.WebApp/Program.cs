@@ -1,3 +1,6 @@
+using MVC.WebApp.DependencyInjection;
+using MVC.WebApp.Repositories;
+
 namespace MVC.WebApp
 {
     public class Program
@@ -8,7 +11,10 @@ namespace MVC.WebApp
 
             // Add services to the container.
 
+
             builder.Services.AddControllers();
+
+            builder.Services.GetServices();
 
             var app = builder.Build();
 
@@ -17,7 +23,6 @@ namespace MVC.WebApp
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
