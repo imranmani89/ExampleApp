@@ -1,6 +1,5 @@
-﻿using MVC.WebApp.Entities;
-using MVC.WebApp.Interfaces;
-using MVC.WebApp.Repositories;
+﻿using Core.Interfaces;
+using DAL.Repositories;
 
 namespace MVC.WebApp.DependencyInjection
 {

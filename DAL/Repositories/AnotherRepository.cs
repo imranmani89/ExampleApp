@@ -1,4 +1,6 @@
-﻿namespace MVC.WebApp.Repositories
+﻿using Microsoft.Extensions.Configuration;
+
+namespace DAL.Repositories
 {
     public class AnotherRepository: IAnotherRepository
     {

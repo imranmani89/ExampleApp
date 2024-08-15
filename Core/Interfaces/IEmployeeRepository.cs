@@ -1,7 +1,7 @@
 
-using MVC.WebApp.Entities;
+using Core.Entities;
 
-namespace MVC.WebApp.Interfaces;
+namespace Core.Interfaces;
 public interface IEmployeeRepository
 {
     List<Employee> GetData();

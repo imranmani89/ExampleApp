@@ -1,4 +1,4 @@
-﻿namespace MVC.WebApp.Repositories
+﻿namespace DAL.Repositories
 {
     public interface IAnotherRepository
     {

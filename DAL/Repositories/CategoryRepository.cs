@@ -1,8 +1,9 @@
-﻿using MVC.WebApp.Entities;
+﻿using Core.Entities;
 using System.Data;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
-namespace MVC.WebApp.Repositories
+namespace DAL.Repositories
 {
     public class CategoryRepository: BaseRepository
     {

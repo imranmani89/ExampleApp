@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVC.WebApp.Entities
+namespace Core.Entities
 {
-    public class Territory
+    public class Region
     {
-        public string TerritoryID { get; set; }
-        public string TerritoryDescription { get; set; }
         public int RegionID { get; set; }
+        public string RegionDescription { get; set; }
     }
 }

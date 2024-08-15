@@ -15,9 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="microsoft.data.sqlclient" Version="5.2.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.0" />
     <PackageReference Include="System.Text.Json" Version="8.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj" />
   </ItemGroup>
 
 </Project>

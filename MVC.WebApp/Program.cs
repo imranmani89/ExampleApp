@@ -1,5 +1,4 @@
 using MVC.WebApp.DependencyInjection;
-using MVC.WebApp.Repositories;
 
 namespace MVC.WebApp
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVC.WebApp.Entities;
-using MVC.WebApp.Interfaces;
+using Core.Entities;
+using Core.Interfaces;
 
 
 namespace MVC.WebApp.Controllers

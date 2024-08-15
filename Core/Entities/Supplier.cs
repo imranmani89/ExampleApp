@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVC.WebApp.Entities
+namespace Core.Entities
 {
-    public class Customer
+    public class Supplier
     {
-        public string CustomerID { get; set; }
+        public int SupplierID { get; set; }
         public string CompanyName { get; set; }
         public string? ContactName { get; set; }
         public string? ContactTitle { get; set; }
@@ -19,6 +19,6 @@ namespace MVC.WebApp.Entities
         public string? Country { get; set; }
         public string? Phone { get; set; }
         public string? Fax { get; set; }
-        
+        public string? HomePage { get; set; }
     }
 }

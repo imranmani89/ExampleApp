@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVC.WebApp.Repositories
+namespace DAL.Repositories
 {
     public class BaseRepository
     {

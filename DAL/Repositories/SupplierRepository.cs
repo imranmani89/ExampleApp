@@ -1,8 +1,9 @@
 ﻿using System.Data;
+using Core.Entities;
 using Microsoft.Data.SqlClient;
-using MVC.WebApp.Repositories;
+using Microsoft.Extensions.Configuration;
 
-namespace MVC.WebApp.Repositories
+namespace DAL.Repositories
 {
     public  class SupplierRepository : BaseRepository
     {

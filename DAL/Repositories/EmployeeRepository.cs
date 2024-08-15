@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
+﻿using Core.Entities;
 using Microsoft.Data.SqlClient;
-using MVC.WebApp.Entities;
-using MVC.WebApp.Interfaces;
+using Core.Interfaces;
 using System.Data;
+using Microsoft.Extensions.Configuration;
 
-namespace MVC.WebApp.Repositories
+namespace DAL.Repositories
 {
     public class EmployeeRepository : BaseRepository, IEmployeeRepository
     {

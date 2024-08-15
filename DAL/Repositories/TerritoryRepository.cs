@@ -1,8 +1,9 @@
 ﻿using Microsoft.Data.SqlClient;
-using MVC.WebApp.Entities;
+using Core.Entities;
 using System.Data;
+using Microsoft.Extensions.Configuration;
 
-namespace MVC.WebApp.Repositories
+namespace DAL.Repositories
 {
     public  class TerritoryRepository : BaseRepository
     {
@@ -10,6 +11,7 @@ namespace MVC.WebApp.Repositories
         {
 
         }
+
         public  List<Territory> GetData()
         {
             string commandString = "Select * FROM Territories";
