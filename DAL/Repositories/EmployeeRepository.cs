@@ -3,6 +3,7 @@ using Microsoft.Data.SqlClient;
 using Core.Interfaces;
 using System.Data;
 using Microsoft.Extensions.Configuration;
+using System.Reflection;
 
 namespace DAL.Repositories
 {
@@ -98,6 +99,28 @@ namespace DAL.Repositories
                 return employee;
             }
             return null;
+        }
+
+        public Employee Create(Employee employee)
+        {
+
+
+            string commandString = $"Insert into Employees ([LastName],[FirstName],[Title],[BirthDate]) values ( '{employee.LastName}' , '{employee.FirstName}', '{employee.Title}', '{employee.BirthDate.Value.ToString("yyyy-MMM-dd")}')";
+            Console.WriteLine(commandString);
+            var connection = new SqlConnection(_connectionString);
+            var command = new SqlCommand(commandString, connection);
+
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+            var a = command.ExecuteNonQuery();
+            if (connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
+            
+            return a > 0 ? employee : new();
         }
     }
 }

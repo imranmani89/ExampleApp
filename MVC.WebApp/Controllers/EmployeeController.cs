@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Core.Entities;
 using Core.Interfaces;
+using MVC.WebApp.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 
 namespace MVC.WebApp.Controllers
@@ -36,5 +38,26 @@ namespace MVC.WebApp.Controllers
             }
             return NotFound();
         }
+
+        [HttpPost]
+        public IActionResult Create([FromBody]EmployeeUpsertDto employeedto)
+        {
+            var employee = new Employee
+            {
+                FirstName = employeedto.FirstName,
+                LastName = employeedto.LastName,
+                BirthDate = DateTime.Parse(employeedto.BirthDate),
+                Title = employeedto.Title,
+            };
+
+            var resultemployee = _repository.Create(employee);
+
+            if (resultemployee is not null)
+            {
+                return Created($"baseurl", resultemployee.EmployeeID);
+            }
+            return BadRequest();
+        }
+
     }
 }
