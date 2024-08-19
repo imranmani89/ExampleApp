@@ -1,3 +1,5 @@
+using Example.EF.DbContexts;
+using Microsoft.EntityFrameworkCore;
 using MVC.WebApp.DependencyInjection;
 
 namespace MVC.WebApp
@@ -12,7 +14,10 @@ namespace MVC.WebApp
 
 
             builder.Services.AddControllers();
-
+            builder.Services.AddDbContext<ExampleDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("NorthwindDb"));
+            });
             builder.Services.GetServices();
             builder.Services.AddSwaggerGen();
             var app = builder.Build();
