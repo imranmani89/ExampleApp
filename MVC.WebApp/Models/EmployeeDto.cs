@@ -1,5 +1,4 @@
-﻿using Core.Entities;
-
+﻿
 namespace MVC.WebApp.Models
 {
     public class EmployeeUpsertDto
