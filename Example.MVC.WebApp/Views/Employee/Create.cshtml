@@ -1,0 +1,52 @@
+﻿@model EmployeeCreateModel
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title h4">New Employee</div>
+        </div>
+        <div class="card-body">
+            <form method="post" asp-area="" asp-controller="Employee" asp-action="Create">
+                <div class="row">
+                    <div class="form-group fw-bold col-md-6 col-sm-12">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" asp-for="FirstName" placeholder="First Name">
+                    </div>
+                    <div class="form-group fw-bold col-md-6 col-sm-12">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" asp-for="LastName" placeholder="Last Name">
+                    </div>
+
+                    <div class="form-group fw-bold col-md-6 col-sm-12">
+                        <label for="birthDate">Birthdate</label>
+                        <input type="datetime" class="form-control datepicker" asp-for="BirthDate" placeholder="BirthDate">
+                    </div>
+                    <div class="form-group fw-bold col-md-6 col-sm-12">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" asp-for="City" placeholder="City">
+                    </div>
+                    <div class="form-group fw-bold col-md-6 col-sm-12">
+                        <label for="country">Country</label>
+                        <input type="text" class="form-control" asp-for="Country" placeholder="Country">
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 my-2">
+                    <span>
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </span>
+                    <span>
+                        <a class="btn btn-secondary" type="button" asp-area="" asp-controller="Employee" asp-action="Index">Cancel</a>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+
+        });
+    </script>
+}

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Employee>
+<div class="container text-end">
+    <a class="btn btn-primary my-2" asp-area="" asp-controller="Employee" asp-action="Create">Add <strong> + </strong></a>
+</div>
+<div class="container card">
+    <div class="card-header">
+        <div class="card-title h3 text-center">Employees Data</div>
+    </div>
+    <div class="card-body">
+        <table class="table table-responsive table-striped">
+            <thead>
+                <tr class="" style="vertical-align:middle;">
+                    <th>Id</th>
+                    <th>Full Name</th>
+                    <th>BirthDate</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                            var locationString = item.Country is null ? item.City : @item.City + "(" + item.Country +")";
+
+                        <tr>
+                            <td>@item.EmployeeId</td>
+                            <td>@item.FirstName @item.LastName</td>
+                            <td>@item.BirthDate!.Value.ToString("dd-MMM-yyyy")</td>
+                            <td class="w-25">@item.Address</td>
+                            <td>@locationString</td>
+                            <td>
+                                <span><a href="#" class="btn btn-warning btn-sm">Edit</a></span>
+                                <span><a id="deleteEmployee" emp-id="@item.EmployeeId" class="btn btn-danger btn-sm">Delete</a></span>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            console.log("document is ready");
+            $("#employeesPage").addClass("fw-bolder");
+
+            $('#deleteEmployee').on("click", function () {
+                var empData = $('#deleteEmployee').attr("emp-id");
+                console.log(empData);
+                $.ajax('@Url.Action("Delete", "Employee")',
+                function () {
+                    type: "GET",
+                            data: { "id": empData },
+                    success: function(response){
+                        alert(console.log(response));
+                    }
+                });
+            });
+        });
+    </script>
+}
