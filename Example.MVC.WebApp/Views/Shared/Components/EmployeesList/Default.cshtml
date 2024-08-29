@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Employee>
+
+
+@if (Model.Any())
+{
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>DOB</th>
+                <th>City (Country)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@item.FirstName @item.LastName</td>
+                    <td>@item.BirthDate.Value.ToString("dd-MMM-yyyy")</td>
+                    <td>@item.City (@item.Country)</td>
+                    <td>
+                        <a class="btn btn-sm btn-warning">Edit</a>
+                        <a class="btn btn-sm btn-danger deleteEmployee" emp-id="@item.EmployeeId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+}

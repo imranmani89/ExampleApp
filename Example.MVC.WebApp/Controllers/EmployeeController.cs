@@ -17,8 +17,7 @@ namespace Example.MVC.WebApp.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var model = _employeeService.GetAll();
-            return View(model);
+            return View();
         }
 
         [HttpGet]
@@ -57,14 +56,24 @@ namespace Example.MVC.WebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
+            if (id is null)
+            {
+                return Json(new { status = "error", description = "id is null" });
+            }
 
             var employee = _employeeService.GetById(id);
             if (employee != null)
             {
                 _employeeService.Delete(employee);
-                return RedirectToAction("Index", new { Controller = "Employee", Area = "" });
+                return Json(new {status = "success"});
             }
-            return RedirectToAction("Error", new { Controller = "Home", Area = "" });
+            return Json(new { status = "error", description = "employee does not exist" });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetEmployees()
+        {
+            return ViewComponent("EmployeesList");
         }
     }
 }
