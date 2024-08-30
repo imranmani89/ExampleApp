@@ -6,37 +6,49 @@
 </div>
 @section Scripts {
     <script type="text/javascript">
-        $(function () {
+        $(document).ready(function () {
             $("#employeesPage").addClass("fw-bolder");
-            $('.deleteEmployee').on("click", function (e) {
-                console.log("delete clicked");
-                e.preventDefault();
-                empData = $(this).attr("emp-id");
+
+            // $('.deleteEmployee').onClick = function (e) {
+            // console.log("delete clicked");
+            // e.preventDefault();
+            // empData = $(this).attr("emp-id");
+            // $.ajax({
+            //     url: `/Employee/Delete/${empData}`,
+            //     contentType: "application/json",
+            //     type: 'Get',
+            //     success: function (response) {
+            //         if (response.status == "success") {
+            //             LoadData();
+            //         }
+            //     }
+            // });
+            // };
+
+            LoadData();
+
+            var deleteButtons = Object.values(document.getElementsByClassName("deleteEmployee"));
+            console.log(deleteButtons);
+
+            deleteButtons.forEach(v => {
+                v.addEventListener('click',(event) => {
+                    event.preventDefault();
+                    console.log(this);
+                });
+            });
+            
+
+            function LoadData() {
                 $.ajax({
-                    url: `/Employee/Delete/${empData}`,
+                    url: `/Employee/GetEmployees`,
                     contentType: "application/json",
                     type: 'Get',
                     success: function (response) {
-                        if (response.status == "success") {
-                            LoadData();
-                        }
+                        $('#employeeData').html(response);
                     }
                 });
-            });
-
-            LoadData();
-            
+            }
         });
 
-        function LoadData() {
-            $.ajax({
-                url: `/Employee/GetEmployees`,
-                contentType: "application/json",
-                type: 'Get',
-                success: function (response) {
-                    $('#employeeData').html(response);
-                }
-            });
-        }
     </script>
 }

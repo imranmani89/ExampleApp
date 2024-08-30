@@ -1,5 +1,7 @@
 using Example.EF.DbContexts;
+using Example.EF.Entities.Identity;
 using Example.MVC.WebApp.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,14 @@ builder.Services.AddDbContext<ExampleDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("NorthwindDb"));
 });
+
+builder.Services.AddDbContext<IdentityContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("NorthwindDb"));
+});
+
+builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<IdentityContext>().AddDefaultTokenProviders();
+
 builder.Services.AddScoped<EmployeeService>();
 var app = builder.Build();
 
@@ -25,7 +35,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

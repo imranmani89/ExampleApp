@@ -2,6 +2,7 @@
 using Example.MVC.WebApp.Models;
 using Example.MVC.WebApp.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Example.MVC.WebApp.Controllers
 {
@@ -23,7 +24,13 @@ namespace Example.MVC.WebApp.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var model = new EmployeeCreateModel();
+            List<string> cities = ["Lahore", "Islamabad", "Sydney", "New York"];
+            List<string> countries = ["Pakistan", "USA", "Australia"];
+            var model = new EmployeeCreateModel
+            {
+                Cities = cities.Select(x => new SelectListItem(x,x)),
+                Countries = countries.Select(x => new SelectListItem(x,x))
+            };
             return View(model);
         }
 
