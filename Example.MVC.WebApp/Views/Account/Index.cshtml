@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AppUser>
+
+<div class="card">
+	<div class="card-header">
+		<div class="card-title row">
+			<div class="col-md-8 col-sm-12"><h3>Users</h3></div>
+			<div class="col-md-4 col-sm-12"><a class="btn btn-sm btn-primary float-md-end" asp-controller="Account" asp-action="Register">Add</a></div>
+		</div>
+	</div>
+	<div class="card-body">
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>Sr.</th>
+					<th>Full Name</th>
+					<th>Email</th>
+					<th>Username</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				@if (Model.Any())
+				{
+					var sr = 0;
+					foreach (var user in Model)
+					{
+
+						sr = sr + 1;
+						<tr>
+							<td>@sr</td>
+							<td>@user.FullName</td>
+							<td>@user.Email</td>
+							<td>@user.UserName</td>
+							<td>
+								<span>
+									<a class="btn btn-sm btn-danger" role-id="@user.Id">Delete</a>
+								</span>
+							</td>
+						</tr>
+					}
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

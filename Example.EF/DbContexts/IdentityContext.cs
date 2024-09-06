@@ -19,10 +19,5 @@ namespace Example.EF.DbContexts
         {
             _config = config;
         }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(_config.GetConnectionString("NorthwindDb"));
-        }
     }
 }

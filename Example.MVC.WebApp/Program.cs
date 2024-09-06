@@ -3,6 +3,7 @@ using Example.EF.Entities.Identity;
 using Example.MVC.WebApp.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,12 +14,20 @@ builder.Services.AddDbContext<ExampleDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("NorthwindDb"));
 });
 
+builder.Services.AddIdentity<AppUser, IdentityRole>(setup =>
+{
+	setup.Password.RequireDigit = false;
+	setup.Password.RequiredLength = 4;
+	setup.Password.RequireNonAlphanumeric = false;
+	setup.Password.RequireUppercase = false;
+	setup.Password.RequireLowercase = false;
+}).AddEntityFrameworkStores<IdentityContext>().AddDefaultTokenProviders();
+
 builder.Services.AddDbContext<IdentityContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("NorthwindDb"));
 });
 
-builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<IdentityContext>().AddDefaultTokenProviders();
 
 builder.Services.AddScoped<EmployeeService>();
 var app = builder.Build();

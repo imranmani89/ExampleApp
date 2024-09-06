@@ -1,0 +1,44 @@
+﻿@model IdentityRoleModel
+
+<div class="card">
+	<div class="card-header">
+		<div class="card-title row">
+			<form method="post" asp-controller="Account" asp-area="" asp-action="IndexRoles">
+				<div class="col-md-2 col-sm-12">Add Roles:</div>
+				<div class="col-md-8 col-sm-12"><input class="input-group-text" asp-for="@Model.role" /></div>
+				<div class="col-md-2 col-sm-12 my-2"><button type="submit" class="btn btn-primary">Add</button></div>
+			</form>
+		</div>
+	</div>
+	<div class="card-body">
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>Sr.</th>
+					<th>Role Name</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				@if (Model.roles.Any())
+				{
+					var sr = 0;
+					foreach (var roles in Model.roles)
+					{
+						sr = sr + 1;
+
+						<tr>
+							<td>@sr</td>
+							<td>@roles.Name</td>
+							<td>
+								<span>
+									<a class="btn btn-danger" role-id="@roles.Id" href="#">Delete</a>
+								</span>
+							</td>
+						</tr>
+					}
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

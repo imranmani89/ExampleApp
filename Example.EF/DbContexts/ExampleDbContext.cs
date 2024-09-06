@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using Example.EF.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Example.EF.DbContexts;
 
 public partial class ExampleDbContext : DbContext
 {
-    public ExampleDbContext()
-    {
-    }
+    private readonly IConfiguration _config;
 
-    public ExampleDbContext(DbContextOptions<ExampleDbContext> options)
+    public ExampleDbContext(DbContextOptions<ExampleDbContext> options,IConfiguration config)
         : base(options)
     {
+        _config = config;
     }
 
     public virtual DbSet<AlphabeticalListOfProduct> AlphabeticalListOfProducts { get; set; }

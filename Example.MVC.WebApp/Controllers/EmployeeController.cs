@@ -1,11 +1,13 @@
 ﻿using Example.EF.Entities;
 using Example.MVC.WebApp.Models;
 using Example.MVC.WebApp.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Example.MVC.WebApp.Controllers
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly EmployeeService _employeeService;
