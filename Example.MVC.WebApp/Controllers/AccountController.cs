@@ -79,41 +79,6 @@ namespace Example.MVC.WebApp.Controllers
 			}
 		}
 
-		
-		//[AllowAnonymous]
-		//public async Task<IActionResult> Register(RegisterRequestModel model)
-		//{
-		//	try
-		//	{
-		//		if (ModelState.IsValid)
-		//		{
-		//			var user = new AppUser { UserName = model.Email, Email = model.Email };
-
-		//			var result = await _userManager.CreateAsync(user, model.Password);
-		//			var role = await _userManager.AddToRoleAsync(user, "Admin");
-
-		//			if (result.Succeeded)
-		//			{
-		//				// Handle successful registration
-		//				return new OkObjectResult("User Register Successfully ");
-		//			}
-		//			else
-		//			{
-		//				return new BadRequestObjectResult("There was an error processing your request, please try again.");
-		//			}
-		//		}
-		//	}
-		//	catch (Exception ex)
-
-		//	{
-		//		return new BadRequestObjectResult(ex.Message);
-
-		//		throw;
-		//	}
-		//	throw new InvalidOperationException("The Code Touched the bottom of the function.");
-		//}
-
-
 		[HttpGet]
 		[AllowAnonymous]
 		public IActionResult Login()
@@ -148,7 +113,7 @@ namespace Example.MVC.WebApp.Controllers
 		{
 
 			await _signinManager.SignOutAsync();
-			return View("Login");
+			return RedirectToAction("Login");
 		}
 	}
 }

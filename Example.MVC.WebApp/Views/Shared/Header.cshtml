@@ -11,18 +11,21 @@
 					<li class="nav-item">
 						<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" id="homePage">Home</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy" id="privacyPage">Privacy</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index" id="employeesPage">Employees</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Index" id="usersPage">Users</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="IndexRoles" id="rolesPage">Roles</a>
-					</li>
+					@if (SignInManager.IsSignedIn(User))
+					{
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy" id="privacyPage">Privacy</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index" id="employeesPage">Employees</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Index" id="usersPage">Users</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="IndexRoles" id="rolesPage">Roles</a>
+						</li>
+					}
 				</ul>
 				<ul class="navbar-nav d-flex justify-content-end">
 					@if (SignInManager.IsSignedIn(User))
